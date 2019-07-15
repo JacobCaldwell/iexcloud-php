@@ -1,6 +1,7 @@
 <?php
 
 class Company extends IEXCloud {
+
     public $symbol;
     public $companyName;
     public $exchange;
@@ -14,10 +15,19 @@ class Company extends IEXCloud {
     public $employees;
     public $tags;
 
-    public function __construct($res) {
-        $json = $res->getBody();
+    public function __construct( $res ) {
+        $json = json_decode( $res ,true );
+        $this->symbol = $json['symbol'];
+        $this->companyName = $json['companyName'];
+        $this->exchange = $json['exchange'];
+        $this->industry = $json['industry'];
+        $this->website = $json['website'];
+        $this->description = $json['description'];
+        $this->CEO = $json['CEO'];
+        $this->securityName = $json['securityName'];
+        $this->issueType = $json['issueType'];
+        $this->sector = $json['sector'];
+        $this->employees = $json['employees'];
+        $this->tags = $json['tags'];
     }
-
-
-
 }
